@@ -1,5 +1,5 @@
 FROM php:8.2-cli
-RUN docker-php-ext-install pdo_sqlite
+RUN apt-get update && apt-get install -y libsqlite3-dev && rm -rf /var/lib/apt/lists/* && docker-php-ext-install pdo_sqlite
 WORKDIR /app
 COPY . /app
 # ডেমোর index.html সরিয়ে দেওয়া — যাতে PHP সার্ভার আসল index.php দেখায়
